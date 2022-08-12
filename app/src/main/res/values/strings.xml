@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MaydCodingChallenge</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="shortly">Shortly</string>
+    <string name="let_s_get_started">Let\'s get started!</string>
+    <string name="please_add_a_link_here">Please add a link here</string>
+    <string name="url_deleted">URL Deleted</string>
+    <string name="paste_your_first_link_into_the_field_to_shorten_it">Paste your first link into \n the field to shorten it</string>
+    <string name="shorten_a_link_here">Shorten a link here</string>
+    <string name="shorten_it">SHORTEN IT</string>
+</resources>

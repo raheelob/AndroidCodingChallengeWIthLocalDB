@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.maydcodingchallenge.data.local.ShortLinkEntity" />
+
+        <variable
+            name="copyItemClickListener"
+            type="com.example.maydcodingchallenge.view.adapter.HistoryListingAdapter.CopyItemClickListener" />
+
+        <variable
+            name="deleteClickListener"
+            type="com.example.maydcodingchallenge.view.adapter.HistoryListingAdapter.DeleteItemClickListener" />
+
+        <variable
+            name="position"
+            type="Integer" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:clipChildren="true"
+        app:cardCornerRadius="20dp"
+        app:strokeColor="@color/white"
+        app:strokeWidth="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/startGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".05" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/endGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".95" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCompleteRL"
+                style="@style/Title.Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:ellipsize="end"
+                android:gravity="start|center_vertical"
+                android:maxLines="1"
+                android:text="@{data.full_link}"
+                app:layout_constraintEnd_toStartOf="@+id/ivDelete"
+                app:layout_constraintStart_toStartOf="@+id/startGuideline"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="https://www.getmayd.com/en-de/become-a-rider/" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->deleteClickListener.onClick(data)}"
+                android:src="@drawable/ic_del"
+                app:layout_constraintBottom_toBottomOf="@+id/tvCompleteRL"
+                app:layout_constraintEnd_toStartOf="@+id/endGuideline"
+                app:layout_constraintTop_toTopOf="@+id/tvCompleteRL" />
+
+            <View
+                android:id="@+id/viewDiv"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray"
+                app:layout_constraintTop_toBottomOf="@+id/ivDelete" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvShortenURL"
+                style="@style/Title.Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:ellipsize="end"
+                android:gravity="start|center_vertical"
+                android:maxLines="1"
+                android:text="@{data.shortLink}"
+                android:textColor="@color/cyan"
+                app:layout_constraintEnd_toStartOf="@+id/ivDelete"
+                app:layout_constraintStart_toStartOf="@+id/startGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/viewDiv"
+                tools:text="https://www.getmayd.com" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCopy"
+                style="@style/Title.Regular"
+                isCopied="@{data.copied}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="20dp"
+                android:onClick="@{() -> copyItemClickListener.onClick(position, data)}"
+                android:textColor="@color/white"
+                app:cornerRadius="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/endGuideline"
+                app:layout_constraintStart_toStartOf="@+id/startGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/tvShortenURL" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
